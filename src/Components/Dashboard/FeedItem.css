@@ -1,0 +1,26 @@
+.feed-item-digest{
+    margin-left:24px;
+}
+
+.feed-item-score{
+    color: red;
+    font-size: 24px;
+    float: right;
+}
+
+.feed-item-user-img-and-emotion{
+    position: relative;
+}
+
+.feed-item-user-img-and-emotion-img{
+    position: absolute;
+    left:0;
+    top:0;
+}
+
+.feed-item-user-img-and-emotion-emotion{
+    position: absolute;
+    left:48px;
+    top:48px;
+    font-size:24px;
+}
