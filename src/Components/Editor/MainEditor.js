@@ -1,3 +1,5 @@
+// Based on https://codepen.io/Kiwka/pen/YNYvyG by Olena Sovyn
+
 import React from "react";
 // import ReactDOM from "react-dom";
 import {Editor, EditorState, RichUtils} from 'draft-js';
