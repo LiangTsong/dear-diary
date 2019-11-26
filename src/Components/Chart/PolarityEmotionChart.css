@@ -1,6 +1,6 @@
 .polarity-emotion-chart-hint{
     background: rgba(0, 0, 0, 0);
-    font-size: 24px;
+    font-size: 35px;
     align-content: center;
 }
 
@@ -10,7 +10,53 @@
     margin: 0 auto;
 }
 
-.invisible-crosshair-tag{
-    font-size: 25px;color: #222222;
+.crosshair-tag{
+    font-size: 30px;
+    color: #222222;
+}
 
+.polarity-emotion-chart-digest-box{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.polarity-emotion-chart-digest-up{
+    color: #666666;
+    font-size: 30px;
+    font-weight: bolder;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+
+    background: linear-gradient(to right,  #FF2D55 0%, #FFCC00 50%, #34C759 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.polarity-emotion-chart-digest-down{
+    color: #666666;
+    font-size: 30px;
+    font-weight: bolder;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+
+    background: linear-gradient(to right, #5856D6 0%, #007AFF 50%, #34C759 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.polarity-emotion-chart-digest-box-quote-left{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+}
+
+.polarity-emotion-chart-digest-box-quote-right{
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
 }
