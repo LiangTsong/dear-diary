@@ -1,0 +1,11 @@
+.polarity-emotion-chart-hint{
+    background: rgba(0, 0, 0, 0);
+    font-size: 24px;
+    align-content: center;
+}
+
+.polarity-emotion-chart-box{
+    height: 300px;
+    width: 80%;
+    margin: 0 auto;
+}
