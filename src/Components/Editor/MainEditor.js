@@ -12,6 +12,9 @@ import italic_img from "../../../data/img/italic-26.png";
 import underlined_img from "../../../data/img/underline-24.png";
 import code_img from "../../../data/img/code-26.png";
 import monospace_img from "../../../data/img/monospaced-font-24.png";
+import header1_img from "../../../data/img/header-1-30.png";
+import header2_img from "../../../data/img/header-2-30.png";
+import header3_img from "../../../data/img/header-3-30.png";
 
 import './MainEditor.css';
 
@@ -78,7 +81,7 @@ class MainEditor extends React.Component {
         // If the user changes block type before entering any text, we can
         // either style the placeholder or hide it. Let's just hide it now.
         let className = 'RichEditor-editor';
-        var contentState = editorState.getCurrentContent();
+        let contentState = editorState.getCurrentContent();
         if (!contentState.hasText()) {
             if (contentState.getBlockMap().first().getType() !== 'unstyled') {
                 className += ' RichEditor-hidePlaceholder';
@@ -108,6 +111,7 @@ class MainEditor extends React.Component {
                         onTab={this.onTab}
                         ref="editor"
                         spellCheck={false}
+                        className="main-editor-font-size"
                     />
                 </div>
             </div>
@@ -146,7 +150,9 @@ class StyleButton extends React.Component {
             "下划线": underlined_img,
             "代码块": code_img,
             "等宽字体": monospace_img,
-
+            "大标题": header1_img,
+            "中标题": header2_img,
+            "小标题": header3_img,
         }
 
         return (

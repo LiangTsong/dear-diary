@@ -1,0 +1,21 @@
+.home-screen-header{
+    width: 70%;
+    font-size: 72px;
+    font-weight: bolder;
+    margin: 0 auto;
+}
+
+.home-screen-write-button{
+    width: 225px;
+    margin: 30px auto;
+}
+
+.home-screen-content{
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.home-feed-flow{
+
+}

@@ -1,0 +1,24 @@
+.main-editor-page-header{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 72px;
+    font-weight: bolder;
+}
+
+.main-editor{
+    width: 50%;
+    margin: 50px auto;
+}
+
+.main-editor-finish-button{
+    float: right;
+    margin-top: 60px;
+    width: 100px;
+}
+
+.main-editor-date{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

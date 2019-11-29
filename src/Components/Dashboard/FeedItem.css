@@ -1,5 +1,10 @@
+.feed-item{
+    margin-bottom: 30px;
+}
+
 .feed-item-digest{
     margin-left:24px;
+    font-size: 20px;
 }
 
 .feed-item-score{
@@ -23,4 +28,13 @@
     left:48px;
     top:48px;
     font-size:24px;
+}
+
+.feed-item-body{
+    padding-left: 90px;
+}
+
+.feed-item-user-name-and-date{
+    font-size: 24px;
+    font-weight: bolder;
 }

@@ -1,23 +1,45 @@
 import React from "react";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
 
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 
-import "./App.css";
+// import "./App.css";
 // import FeedItem from "./Components/Dashboard/FeedItem";
 import PolarityEmotionChart from "./Components/Chart/PolarityEmotionChart";
+// import MainEditor from "./Components/Editor/MainEditor";
+import Home from "./Components/Page/Home";
+import Write from "./Components/Page/Write";
 
 const App = () => (
-    <Container className="p-3">
-        <Jumbotron>
-            <h1 className="header">测试</h1>
-            <PolarityEmotionChart className="toast">
-                <span role="img" aria-label="tada">
-          🎉
-        </span>
+    <Router>
+        <div>
+            <Switch>
+                <Route path="/chart">
+                    <Chart />
+                </Route>
+                <Route path="/write">
+                    <Write />
+                </Route>
+                <Route path="/">
+                    <Home />
+                </Route>
+            </Switch>
+        </div>
+    </Router>
+)
+
+function Chart(){
+    return (
+        <Container className="">
+            <PolarityEmotionChart className="">
             </PolarityEmotionChart>
-        </Jumbotron>
-    </Container>
-);
+        </Container>
+    )
+}
+
 
 export default App;

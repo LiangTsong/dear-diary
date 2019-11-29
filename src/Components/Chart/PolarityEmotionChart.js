@@ -18,16 +18,16 @@ class PolarityEmotionChart extends React.Component {
             currentIndex: 0,
             crosshairValues: [],
             showDigest: false,
-            emojis: ["🤪", "🤪", "🤪", "🤪", "🤪", "🤪", "🤪"],
+            emojis: ["🤪", "🤪", "😭", "🤪", "🤪", "🤪", "🤪"],
             digests: ["开心开心开心开心开心开心开心", "伤心伤心伤心伤心伤心伤心伤心伤心",
-                "伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心伤心",
-                "开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心开心",
+                "难过到了极点。早课睡过头了。外卖撒了。ddl到了。火车晚点了。真是伤心的一天。",
+                "今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。",
                 "中等中等中等", "开心开心开心开心开心开心开心", "中等中等中等"],
             data: [
                 {x: 0, y: 0.89},
                 {x: 1, y: 0.35},
                 {x: 2, y: 0.11},
-                {x: 3, y: 0.96},
+                {x: 3, y: 0.93},
                 {x: 4, y: 0.55},
                 {x: 5, y: 0.68},
                 {x: 6, y: 0.55},
@@ -56,6 +56,7 @@ class PolarityEmotionChart extends React.Component {
 
                         <GradientDefs>
                             <linearGradient id="EmotionGradient" x1="0" x2="0" y1="0" y2="1">
+                                {/*<stop offset="0%" stopColor="#FFD60A" stopOpacity={0.4}/>*/}
                                 <stop offset="0%" stopColor="#FFD60A" stopOpacity={0.4}/>
                                 <stop offset="55%" stopColor="#5AC8FA" stopOpacity={0.3}/>
                                 <stop offset="65%" stopColor="#5AC8FA" stopOpacity={0.3}/>

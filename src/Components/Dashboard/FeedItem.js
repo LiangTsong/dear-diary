@@ -1,7 +1,6 @@
 import React from "react";
 
 import Media from "react-bootstrap/Media";
-import user_img_generic from "../../../data/img/user_img_generic.jpeg";
 import left_comma from "../../../data/img/quote-left-48.png";
 
 import './FeedItem.css';
@@ -10,35 +9,35 @@ class FeedItem extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            date:'2019-12-31 00:00',
-            user_name:'我自己',
-            user_img:'../../../data/img/user_img_generic.jpeg',
-            digest:'这是一段毫无意义的话这是一段毫无意义的话这是一段毫无意义的话这是一段毫无意义的话这是一段毫无意义的话',
-            emotion:'😀',
-            score:'⬤',
+            date: props.date,
+            user_name: props.user_name,
+            user_img: props.user_img,
+            digest: props.digest,
+            emotion: props.emotion,
+            score: props.score,
         };
     }
 
     render() {
         return(
-            <Media>
+            <Media className="feed-item">
                 <div className="feed-item-user-img-and-emotion">
                     <img className="feed-item-user-img-and-emotion-img"
                         width={64}
                         height={64}
-                        src={user_img_generic}
+                        src={this.state.user_img}
                         alt="Generic placeholder"
                     />
-                    <h className="feed-item-user-img-and-emotion-emotion">
+                    <div className="feed-item-user-img-and-emotion-emotion">
                         {this.state.emotion}
-                    </h>
+                    </div>
                 </div>
-                <Media.Body>
-                    <div>
+                <Media.Body className="feed-item-body">
+                    <div className="feed-item-user-name-and-date">
                         {this.state.user_name}，{this.state.date}
                         <h5 className="feed-item-score">{this.state.score}</h5>
                     </div>
-                    <img src={left_comma} alt='“'/>
+                    <img src={left_comma} width={24} height={24} alt='“'/>
                     <p className="feed-item-digest">
                         {this.state.digest}
                     </p>
