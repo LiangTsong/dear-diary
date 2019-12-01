@@ -22,3 +22,9 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.main-editor-to-do-list{
+    position: absolute;
+    left: 76%;
+    width: 15%;
+}

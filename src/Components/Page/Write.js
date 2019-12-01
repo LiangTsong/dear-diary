@@ -3,6 +3,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 
 import MainEditor from "../Editor/MainEditor";
+import EditorToDoList from "../ToDoList/EditorToDoList";
 import "./Write.css"
 
 class Write extends React.Component {
@@ -15,6 +16,29 @@ class Write extends React.Component {
 
     render() {
 
+        const editor_todo_data=[
+            {
+                date: new Date(),
+                content: '2019年最后一天',
+                id: 0,
+            },
+            {
+                date: new Date(),
+                content: '2019年最后一天',
+                id: 1,
+            },
+            {
+                date: new Date(),
+                content: '2019年最后一天',
+                id: 2,
+            },
+            {
+                date: new Date(),
+                content: '2019年最后一天',
+                id: 3,
+            },
+        ];
+
         return(
             <div>
                 <header className="main-editor-page-header">
@@ -25,8 +49,13 @@ class Write extends React.Component {
                     <div className="main-editor-date">
                         {this.state.date}
                     </div>
-                    <MainEditor className="">
-                    </MainEditor>
+                    <div>
+                        <div className="main-editor-to-do-list">
+                            <EditorToDoList editor_todo_data={editor_todo_data}/>
+                        </div>
+                        <MainEditor className="">
+                        </MainEditor>
+                    </div>
                 </div>
             </div>
         );
