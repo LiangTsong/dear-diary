@@ -1,0 +1,35 @@
+.to-do-list-box-header{
+    font-weight: bolder;
+    font-size: 24px;
+}
+
+.to-do-item{
+    width: 100%;
+}
+
+.to-do-item-content-expired-0{
+    font-size: 18px;
+}
+
+.to-do-item-content-expired-1{
+    font-size: 18px;
+    color: #FF9500;
+}
+
+.to-do-item-content-expired-2{
+    font-size: 18px;
+    color: #FF453A;
+}
+
+.to-do-item-content-finished{
+    font-size: 18px;
+    color: #C7C7CC;
+    text-decoration-line: line-through;
+}
+
+.to-do-item-date{
+    font-size: 15px;
+    font-weight: lighter;
+    color: #666666;
+    float: right;
+}

@@ -1,13 +1,29 @@
 .home-screen-header{
     width: 70%;
-    font-size: 72px;
+    font-size: 82px;
     font-weight: bolder;
     margin: 0 auto;
 }
 
+.home-screen-user-img-and-write-button{
+    position: relative;
+}
+
+.home-screen-user-img{
+    position: absolute;
+}
 .home-screen-write-button{
     width: 225px;
     margin: 30px auto;
+    position: absolute;
+    top: 230px;
+}
+
+.home-screen-to-do-list{
+    position: absolute;
+    top: 370px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .home-screen-content{

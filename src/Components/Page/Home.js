@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 import FeedItem from "../Dashboard/FeedItem";
+import ToDoList from "../ToDoList/ToDoList";
 
 import "./Home.css"
 import user_img from "../../../data/img/user_img_generic.jpeg"
@@ -81,6 +82,36 @@ class Home extends React.Component {
                     score: '⬤',
                 },
             ],
+            todo_data:[
+                {
+                    date: '2019.12.31 00:00',
+                        content: '2019年最后一天',
+                    expired: 0,
+                    finished: 0,
+                    id: 0,
+                },
+                {
+                    date: '2019.12.31 00:00',
+                        content: '2019年最后一天',
+                    expired: 1,
+                    finished: 0,
+                    id: 1,
+                },
+                {
+                    date: '2019.12.31 00:00',
+                        content: '2019年最后一天',
+                    expired: 2,
+                    finished: 0,
+                    id: 2,
+                },
+                {
+                    date: '2019.12.31 00:00',
+                        content: '2019年最后一天',
+                    expired: 2,
+                    finished: 1,
+                    id: 3,
+                },
+            ],
         }
     }
 
@@ -98,17 +129,24 @@ class Home extends React.Component {
         return (
             <div>
                 <header className="home-screen-header">
-                    你好
+                    日记
                 </header>
 
                 <div className="home-screen-content">
                     <Row>
                         <Col sm={4} xs={6}>
-                            <img src={this.state.user_img} alt="user_img" width={225} height={225}/>
-                            <Button variant="outline-success"
-                                    className="home-screen-write-button">
-                                写日记
-                            </Button>
+                            <div className="home-screen-user-img-and-write-button">
+                                <img src={this.state.user_img} alt="user_img"
+                                     className="home-screen-user-img" width={225} height={225}/>
+                                <Button variant="outline-success"
+                                        className="home-screen-write-button">
+                                    写日记
+                                </Button>
+                                <div className="home-screen-to-do-list">
+                                    <ToDoList todo_data={this.state.todo_data}>
+                                    </ToDoList>
+                                </div>
+                            </div>
                         </Col>
                         <Col sm={8} xs={12} className="home-feed-flow">
                             <div>
