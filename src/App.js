@@ -5,14 +5,9 @@ import {
     Route,
 } from "react-router-dom";
 
-import Container from "react-bootstrap/Container";
-
-// import "./App.css";
-// import FeedItem from "./Components/Dashboard/FeedItem";
-import PolarityEmotionChart from "./Components/Chart/PolarityEmotionChart";
-// import MainEditor from "./Components/Editor/MainEditor";
 import Home from "./Components/Page/Home";
 import Write from "./Components/Page/Write";
+import Chart from "./Components/Page/Chart";
 
 const App = () => (
     <Router>
@@ -31,15 +26,6 @@ const App = () => (
         </div>
     </Router>
 )
-
-function Chart(){
-    return (
-        <Container className="">
-            <PolarityEmotionChart className="">
-            </PolarityEmotionChart>
-        </Container>
-    )
-}
 
 
 export default App;

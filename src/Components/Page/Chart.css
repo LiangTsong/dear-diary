@@ -1,0 +1,29 @@
+.chart-screen-header{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 72px;
+    font-weight: bolder;
+}
+
+.chart-screen-chart{
+    padding-top: 150px;
+    width: 65%;
+    margin: 0 auto;
+}
+
+.chart-screen-week-month-year-buttons{
+    position: absolute;
+    right: 25%;
+    top: 110px;
+}
+
+.chart-screen-button{
+    margin-left: 20px;
+}
+
+.chart-screen-horizontal-slider{
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-left: 20px;
+}
