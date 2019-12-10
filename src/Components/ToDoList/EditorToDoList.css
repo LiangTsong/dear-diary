@@ -12,3 +12,15 @@
     font-weight: normal;
     width: 100%;
 }
+
+.to-do-list-delete{
+    height: 20px;
+    width: 5px;
+    float: right;
+}
+
+.to-do-list-delete-text{
+    position: absolute;
+    right: 25px;
+    top: 11px;
+}

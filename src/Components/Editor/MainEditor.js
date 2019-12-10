@@ -21,15 +21,26 @@ import './MainEditor.css';
 class MainEditor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { editorState: EditorState.createEmpty() };
 
         this.focus = () => this.refs.editor.focus();
-        this.onChange = (editorState) => this.setState({ editorState });
+        this.onChange = this.onChange.bind(this);
 
         this.handleKeyCommand = (command) => this._handleKeyCommand(command);
         this.onTab = (e) => this._onTab(e);
         this.toggleBlockType = (type) => this._toggleBlockType(type);
         this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+
+        this.state={
+            editorState: EditorState.createEmpty(),
+            text: null,
+        }
+    }
+
+    onChange(editorState){
+        // \U+FFFD is the separator
+        const text = editorState.getCurrentContent().getPlainText('\u0001');
+        this.setState({ editorState: editorState, text: text });
+        console.log(text);
     }
 
     _handleKeyCommand(command) {
@@ -221,7 +232,7 @@ const InlineStyleControls = (props) => {
             )}
         </div>
     );
-}
+};
 
 
 export default MainEditor;

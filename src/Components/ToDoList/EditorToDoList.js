@@ -6,6 +6,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import DateTimePicker from "react-datetime-picker";
 
 import './EditorToDoList.css';
+import Button from "react-bootstrap/Button";
 
 class EditorToDoList extends React.Component {
     constructor(props){
@@ -13,7 +14,6 @@ class EditorToDoList extends React.Component {
         const editor_todo_data = props.editor_todo_data.slice();
         this.state = {
             todo_data: editor_todo_data,
-            value: '你好',
         };
     };
 
@@ -39,6 +39,9 @@ class EditorToDoList extends React.Component {
             <ListGroup.Item key={index}>
                 <Form.Group>
                     <Form.Label>事项</Form.Label>
+                        <Button className="to-do-list-delete" size="sm" variant="outline-dark">
+                            <div className="to-do-list-delete-text">X</div>
+                        </Button>
                     <Form.Control type="text" placeholder="提醒事项"
                                   value={item.content}
                                   onChange={(e)=>this.handleTDContentChange(e, index, item.id)}/>
@@ -57,6 +60,7 @@ class EditorToDoList extends React.Component {
                     <Card.Header className="to-do-list-box-header">自动提取的提醒事项</Card.Header>
                     <ListGroup>
                         {todos}
+                        <Button className="to-do-list-submit" variant="secondary">保存</Button>
                     </ListGroup>
                 </Card>
             </div>

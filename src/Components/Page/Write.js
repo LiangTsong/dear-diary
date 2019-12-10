@@ -32,11 +32,6 @@ class Write extends React.Component {
                 content: '2019年最后一天',
                 id: 2,
             },
-            {
-                date: new Date(),
-                content: '2019年最后一天',
-                id: 3,
-            },
         ];
 
         return(
