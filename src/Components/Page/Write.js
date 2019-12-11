@@ -19,17 +19,17 @@ class Write extends React.Component {
         const editor_todo_data=[
             {
                 date: new Date(),
-                content: '2019年最后一天',
+                content: '2019年最后一天1',
                 id: 0,
             },
             {
                 date: new Date(),
-                content: '2019年最后一天',
+                content: '2019年最后一天2',
                 id: 1,
             },
             {
                 date: new Date(),
-                content: '2019年最后一天',
+                content: '2019年最后一天3',
                 id: 2,
             },
         ];

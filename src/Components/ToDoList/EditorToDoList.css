@@ -24,3 +24,14 @@
     right: 25px;
     top: 11px;
 }
+
+.main-editor-to-do-list-content-time-title{
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.to-do-list-box-new-button{
+    position: absolute;
+    right: 15px;
+    top: 17px;
+}
