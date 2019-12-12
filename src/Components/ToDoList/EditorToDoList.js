@@ -8,6 +8,8 @@ import new_item_img from "../../../data/img/plus-26.png";
 
 import './EditorToDoList.css';
 import Button from "react-bootstrap/Button";
+import axios from "axios";
+import {SUBMIT_DIARY, URL_ROOT} from "../../Constants";
 
 class EditorToDoList extends React.Component {
     constructor(props){
@@ -67,6 +69,39 @@ class EditorToDoList extends React.Component {
         return show_str[this.state.todo_data[index].show];
     }
 
+    async handleSaveTodo() {
+        const my_todo_data = JSON.parse(JSON.stringify(this.state.todo_data));
+        const post_todo_data = [];
+        let i;
+        for (i = 0; i < my_todo_data.length; i++) {
+            if (my_todo_data[i].show === 1) {
+                let new_item = {
+                    date: new Date(my_todo_data[i].date).getTime(),
+                    content: my_todo_data[i].content,
+                };
+                post_todo_data.push(JSON.parse(JSON.stringify(new_item)));
+            }
+        }
+
+        const post_data = {
+            todo_data: post_todo_data,
+        };
+
+        const response = await axios.post(
+            URL_ROOT + SUBMIT_DIARY,
+            post_data
+        );
+
+        console.log(post_data);
+
+        if(response.success === 1){
+
+        }else{
+            this.props.setAlertType(3);
+            this.props.setShowAlert(true);
+        }
+    }
+
     render() {
 
         const todos = this.state.todo_data.map((item, index) =>
@@ -101,7 +136,7 @@ class EditorToDoList extends React.Component {
                          alt="new-item" onClick={()=>this.handleNewItem()}/>
                     <ListGroup>
                         {todos}
-                        <Button className="to-do-list-submit" variant="secondary">保存</Button>
+                        <Button className="to-do-list-submit" variant="secondary" onClick={()=>this.handleSaveTodo()}>保存</Button>
                     </ListGroup>
                 </Card>
             </div>

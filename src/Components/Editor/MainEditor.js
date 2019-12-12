@@ -21,7 +21,7 @@ import './MainEditor.css';
 class MainEditor extends React.Component {
     constructor(props) {
         super(props);
-
+        this.props = props;
         this.focus = () => this.refs.editor.focus();
         this.onChange = this.onChange.bind(this);
 
@@ -30,17 +30,18 @@ class MainEditor extends React.Component {
         this.toggleBlockType = (type) => this._toggleBlockType(type);
         this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 
+        const editor_state = (props.editorState.length > 0)? (props.editorState.length) : EditorState.createEmpty();
         this.state={
-            editorState: EditorState.createEmpty(),
+            editorState: editor_state,
             text: null,
         }
     }
 
     onChange(editorState){
         // \U+FFFD is the separator
-        const text = editorState.getCurrentContent().getPlainText('\u0001');
+        const text = editorState.getCurrentContent().getPlainText("\n");
         this.setState({ editorState: editorState, text: text });
-        console.log(text);
+        this.props.handleTextChange(text, editorState);
     }
 
     _handleKeyCommand(command) {

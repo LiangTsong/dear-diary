@@ -24,7 +24,12 @@
 }
 
 .main-editor-to-do-list{
+    margin: 100px auto;
+    width: 50%;
+}
+
+.main-editor-spinner{
     position: absolute;
-    left: 76%;
-    width: 15%;
+    left: 50%;
+    top: 50%;
 }
