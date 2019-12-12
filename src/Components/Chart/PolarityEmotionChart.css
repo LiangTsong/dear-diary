@@ -12,6 +12,8 @@
 
 .crosshair-tag{
     font-size: 30px;
+    width: 100px;
+    text-align: center;
     color: #222222;
 }
 
