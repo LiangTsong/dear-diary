@@ -33,3 +33,16 @@
     color: #666666;
     float: right;
 }
+
+.to-do-list-delete{
+    height: 20px;
+    width: 5px;
+    right: 10px;
+    margin-right: 20px;
+    position: absolute;
+}
+
+.to-do-list-delete-text{
+    margin-top: -12px;
+    margin-right: -21px;
+}

@@ -10,81 +10,47 @@ import ToDoList from "../ToDoList/ToDoList";
 
 import "./Home.css"
 import user_img from "../../../data/img/user_img_generic.jpeg"
+import axios from "axios";
+import {USER_INFO, URL_ROOT, GET_TODO, INFO_FLOW} from "../../Constants";
+import Alert from "react-bootstrap/Alert";
 
 class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            alert_type_str: ["发生错误：服务器无法获取信息。", "发生错误：无法对提醒事项进行操作。"],
             user_img: user_img,
+            user_name: '',
+            show_alert: false,
+            alert_type: 0,
             feed_item_data: [
                 {
+                    type: 0,
+                    item_id: 1,
+                    diary_id: 1,
                     date:"2019-12-31 00:00",
                     user_name:"我自己",
                     user_img:user_img,
                     digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: '😀',
-                    score: '⬤',
+                    emotion: ['😀'],
+                    score: 0.99,
                 },
                 {
+                    type: 1,
+                    item_id: 1,
+                    diary_id: 1,
                     date:"2019-12-31 00:00",
                     user_name:"我自己",
                     user_img:user_img,
                     digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: '😀',
-                    score: '⬤',
+                    emotion: ['😀','😀'],
+                    score: 0.88,
                 },
-                {
-                    date:"2019-12-31 00:00",
-                    user_name:"我自己",
-                    user_img:user_img,
-                    digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: '😀',
-                    score: '⬤',
-                },
-                {
-                    date:"2019-12-31 00:00",
-                    user_name:"我自己",
-                    user_img:user_img,
-                    digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: '😀',
-                    score: '⬤',
-                },
-                {
-                    date:"2019-12-31 00:00",
-                    user_name:"我自己",
-                    user_img:user_img,
-                    digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: '😀',
-                    score: '⬤',
-                },
-                {
-                    date:"2019-12-31 00:00",
-                    user_name:"我自己",
-                    user_img:user_img,
-                    digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: '😀',
-                    score: '⬤',
-                },
-                {
-                    date:"2019-12-31 00:00",
-                    user_name:"我自己",
-                    user_img:user_img,
-                    digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: '😀',
-                    score: '⬤',
-                },
-                {
-                    date:"2019-12-31 00:00",
-                    user_name:"我自己",
-                    user_img:user_img,
-                    digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: '😀',
-                    score: '⬤',
-                },
+
             ],
             todo_data:[
                 {
-                    date: '2019.12.31 00:00',
+                    date: new Date().getTime(),
                     content: '2019年最后一天',
                     expired: 0,
                     finished: 0,
@@ -115,6 +81,75 @@ class Home extends React.Component {
         }
     }
 
+    async componentDidMount() {
+        const post_data = {};
+        // user_info
+        const response_1 = await axios.post(
+            URL_ROOT + USER_INFO,
+            post_data
+        );
+
+        if(response_1.success === 1){
+            this.setState({
+                user_img: response_1.user_img,
+                user_name: response_1.user_name,
+            })
+        }else{
+            this.setState({
+                show_alert: true,
+            })
+        }
+
+        // todo_list
+        const response_2 = await axios.post(
+            URL_ROOT + GET_TODO,
+            post_data
+        );
+
+        if(response_2.success === 1){
+            this.setState({
+                todo_data: response_2.todo_data,
+            })
+        }else{
+            this.setState({
+                show_alert: true,
+            })
+        }
+
+        // info_flow
+        const response_3 = await axios.post(
+            URL_ROOT + INFO_FLOW,
+            post_data
+        );
+
+        if(response_3.success === 1){
+            this.setState({
+                todo_data: response_3.todo_data,
+            })
+        }else{
+            this.setState({
+                show_alert: true,
+            })
+        }
+    }
+
+    setShowAlert(b, i){
+        this.setState({
+            show_alert: b,
+            alert_type: i,
+        })
+    }
+
+    generateAlertBar(){
+        if(this.state.show_alert){
+            return(
+                <Alert variant="danger" onClose={() => this.setShowAlert(false, 0)} dismissible>
+                    {this.state.alert_type_str[this.state.alert_type]}
+                </Alert>
+            );
+        }
+    }
+
     render() {
         const feed_items = this.state.feed_item_data.map((item, key)=>
             <FeedItem key={key}
@@ -128,6 +163,7 @@ class Home extends React.Component {
 
         return (
             <div>
+                {this.generateAlertBar()}
                 <header className="home-screen-header">
                     日记
                 </header>
@@ -143,7 +179,8 @@ class Home extends React.Component {
                                     写日记
                                 </Button>
                                 <div className="home-screen-to-do-list">
-                                    <ToDoList todo_data={this.state.todo_data}>
+                                    <ToDoList todo_data={this.state.todo_data}
+                                              setShowAlert={(b, i)=>this.setShowAlert(b, i)}>
                                     </ToDoList>
                                 </div>
                             </div>

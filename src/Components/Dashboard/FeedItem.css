@@ -7,8 +7,7 @@
     font-size: 20px;
 }
 
-.feed-item-score{
-    color: red;
+.feed-item-get-diary{
     font-size: 24px;
     float: right;
 }
@@ -23,13 +22,6 @@
     top:0;
 }
 
-.feed-item-user-img-and-emotion-emotion{
-    position: absolute;
-    left:48px;
-    top:48px;
-    font-size:24px;
-}
-
 .feed-item-body{
     padding-left: 90px;
 }
@@ -37,4 +29,9 @@
 .feed-item-user-name-and-date{
     font-size: 24px;
     font-weight: bolder;
+}
+
+.feed-item-user-img-and-emotion-emotions{
+    z-index: 0;
+    position: relative;
 }

@@ -9,7 +9,7 @@ import new_item_img from "../../../data/img/plus-26.png";
 import './EditorToDoList.css';
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {SUBMIT_DIARY, URL_ROOT} from "../../Constants";
+import {SUBMIT_TODO, URL_ROOT} from "../../Constants";
 
 class EditorToDoList extends React.Component {
     constructor(props){
@@ -88,7 +88,7 @@ class EditorToDoList extends React.Component {
         };
 
         const response = await axios.post(
-            URL_ROOT + SUBMIT_DIARY,
+            URL_ROOT + SUBMIT_TODO,
             post_data
         );
 
