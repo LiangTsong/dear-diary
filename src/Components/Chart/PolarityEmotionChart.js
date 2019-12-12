@@ -92,8 +92,8 @@ class PolarityEmotionChart extends React.Component {
                             values={this.state.crosshairValues}
                             className="crosshair-tag">
                             <p>{this.props.data[this.state.currentIndex].y}</p>
-                            <p>{moment.unix((new Date(this.props.dates
-                                [this.state.currentIndex])).getTime()/1000)
+                            <p>{moment.unix((new Date(this.props.dates[this.state.currentIndex]))
+                                .getTime()/1000)
                                 .format("YYYY年MM月DD日")}</p>
                         </Crosshair>
 
