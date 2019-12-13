@@ -21,16 +21,16 @@ const App = () => (
         <Router>
             <div>
                 <Switch>
-                    <Route path="/dear-diary/chart">
+                    <Route path={process.env.PUBLIC_URL + '/chart'}>
                         <Chart />
                     </Route>
-                    <Route path="/dear-diary/write">
+                    <Route path={process.env.PUBLIC_URL + '/write'}>
                         <Write />
                     </Route>
-                    <Route path="/dear-diary/write_p">
+                    <Route path={process.env.PUBLIC_URL + '/write_p'}>
                         <WriteP />
                     </Route>
-                    <Route path="/dear-diary/">
+                    <Route path={process.env.PUBLIC_URL + '/'}>
                         <Home />
                     </Route>
                 </Switch>

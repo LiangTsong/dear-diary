@@ -181,7 +181,6 @@ class Write extends React.Component {
     }
 
     generateAlertBar(){
-        const type_str = this.state.alert_str;
         if(this.state.show_alert){
             return(
                 <Alert variant="danger" onClose={() => this.setShowAlert(false)} dismissible>

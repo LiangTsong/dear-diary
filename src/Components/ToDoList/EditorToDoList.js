@@ -110,7 +110,7 @@ class EditorToDoList extends React.Component {
     render() {
 
         if (this.state.status === 3) {
-            return <Redirect to='/dear-diary/home' />
+            return <Redirect to={process.env.PUBLIC_URL + '/'} />
         };
 
         const todos = this.state.todo_data.map((item, index) =>

@@ -142,12 +142,12 @@ class Home extends React.Component {
                                      className="home-screen-user-img" width={225} height={225}/>
                                 <Button variant="outline-success"
                                         className="home-screen-write-button-1"
-                                        href="/dear-diary/write">
+                                        href="/write">
                                     写日记
                                 </Button>
                                 <Button variant="outline-warning"
                                         className="home-screen-write-button-2"
-                                        href="/dear-diary/write_p">
+                                        href="/write_p">
                                     特权写日记
                                 </Button>
                                 <div className="home-screen-to-do-list">
@@ -178,7 +178,7 @@ class Home extends React.Component {
                 <header className="home-screen-header">
                     日记
                     <Button className="home-screen-header-chart-link"
-                            variant="outline-info" href="/dear-diary/chart">统计</Button>
+                            variant="outline-info" href={process.env.PUBLIC_URL + '/chart'}>统计</Button>
                 </header>
                 {this.generateBody()}
             </div>
