@@ -1,7 +1,9 @@
 {
   "name": "dear-diary",
   "version": "0.1.0",
+  "author": "liangxcong@gmail.com",
   "private": true,
+  "homepage": " https://liangtsong.github.io/dear-diary/",
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",

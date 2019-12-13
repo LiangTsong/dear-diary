@@ -10,9 +10,13 @@ import Write from "./Components/Page/Write";
 import Chart from "./Components/Page/Chart";
 
 import "./App.css";
+import {Helmet} from "react-helmet";
 
 const App = () => (
     <div>
+        <Helmet>
+            <title>Dear Diary</title>
+        </Helmet>
         <Router>
             <div>
                 <Switch>
