@@ -11,6 +11,7 @@ import Chart from "./Components/Page/Chart";
 
 import "./App.css";
 import {Helmet} from "react-helmet";
+import WriteP from "./Components/Presentation/WriteP";
 
 const App = () => (
     <div>
@@ -25,6 +26,9 @@ const App = () => (
                     </Route>
                     <Route path="/write">
                         <Write />
+                    </Route>
+                    <Route path="/write_p">
+                        <WriteP />
                     </Route>
                     <Route path="/">
                         <Home />

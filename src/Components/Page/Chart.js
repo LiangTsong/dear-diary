@@ -9,6 +9,7 @@ import PolarityEmotionChart from "../Chart/PolarityEmotionChart";
 import "./Chart.css"
 import axios from "axios";
 import {URL_ROOT, GET_CHART} from "../../Constants";
+import Spinner from "react-bootstrap/Spinner";
 
 class Chart extends React.Component {
     constructor(props){
@@ -16,6 +17,7 @@ class Chart extends React.Component {
         this.state={
             data_show_number: 7,
             slider_value: 100,
+            status: 0,
             id: [],
             data_number: 11,
             emojis: [["🤪"], ["🤪"], ["😭"], ["🤪"], ["🤪"], ["🤪"], ["🤪"], ["🤪"], ["🤪"], ["🤪"], [""]],
@@ -57,6 +59,7 @@ class Chart extends React.Component {
                 digests: response.digests,
                 data: response.data,
                 dates: response.dates,
+                status: 1,
             })
         }
 
@@ -97,7 +100,7 @@ class Chart extends React.Component {
 
     handleSliderChange(value){
         this.setState({
-           slider_value: value,
+            slider_value: value,
         });
     }
 
@@ -107,30 +110,43 @@ class Chart extends React.Component {
         });
     }
 
-    render() {
-
+    generateBody(){
         const data_to_show = this.generateDataToShow();
+        if(this.state.status === 0){
+            return(
+                <Spinner className="chart-page-spinner" animation="grow" />
+            );
+        }else if(this.state.status === 1){
+            return(
+                <div>
+                    <div className="chart-screen-week-month-year-buttons">
+                        <Button variant="outline-primary" className="chart-screen-button" onClick={()=>this.handleButton(7)}>周</Button>
+                        <Button variant="outline-primary" className="chart-screen-button" onClick={()=>this.handleButton(30)}>月</Button>
+                        <Button variant="outline-primary" className="chart-screen-button" onClick={()=>this.handleButton(365)}>年</Button>
+                    </div>
+                    <div className="chart-screen-horizontal-slider">
+                        <Slider value={this.state.slider_value} onChange={(value)=>this.handleSliderChange(value)}/>
+                    </div>
+                    <div className="chart-screen-chart">
+                        <PolarityEmotionChart emojis={data_to_show.emojis}
+                                              digests={data_to_show.digests}
+                                              data={data_to_show.data}
+                                              dates={data_to_show.dates}
+                                              id={data_to_show.id}/>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    render() {
 
         return(
             <div>
                 <header className="chart-screen-header">
                     回顾
                 </header>
-                <div className="chart-screen-week-month-year-buttons">
-                    <Button variant="outline-primary" className="chart-screen-button" onClick={()=>this.handleButton(7)}>周</Button>
-                    <Button variant="outline-primary" className="chart-screen-button" onClick={()=>this.handleButton(30)}>月</Button>
-                    <Button variant="outline-primary" className="chart-screen-button" onClick={()=>this.handleButton(365)}>年</Button>
-                </div>
-                <div className="chart-screen-horizontal-slider">
-                    <Slider value={this.state.slider_value} onChange={(value)=>this.handleSliderChange(value)}/>
-                </div>
-                <div className="chart-screen-chart">
-                    <PolarityEmotionChart emojis={data_to_show.emojis}
-                                          digests={data_to_show.digests}
-                                          data={data_to_show.data}
-                                          dates={data_to_show.dates}
-                                          id={data_to_show.id}/>
-                </div>
+                {this.generateBody()}
             </div>
         );
     }

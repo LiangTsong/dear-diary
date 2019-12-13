@@ -12,16 +12,24 @@
 .home-screen-user-img{
     position: absolute;
 }
-.home-screen-write-button{
+
+.home-screen-write-button-1{
     width: 225px;
     margin: 30px auto;
     position: absolute;
     top: 230px;
 }
 
+.home-screen-write-button-2{
+    width: 225px;
+    margin: 30px auto;
+    position: absolute;
+    top: 280px;
+}
+
 .home-screen-to-do-list{
     position: absolute;
-    top: 370px;
+    top: 380px;
     width: 80%;
     margin: 0 auto;
 }
@@ -34,4 +42,10 @@
 
 .home-feed-flow{
 
+}
+
+.home-page-spinner{
+    position: absolute;
+    left: 50%;
+    top: 50%;
 }

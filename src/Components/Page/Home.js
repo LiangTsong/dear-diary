@@ -12,6 +12,7 @@ import user_img from "../../../data/img/user_img_generic.jpeg"
 import axios from "axios";
 import {USER_INFO, URL_ROOT, GET_TODO, INFO_FLOW} from "../../Constants";
 import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 
 class Home extends React.Component {
     constructor(props){
@@ -19,6 +20,7 @@ class Home extends React.Component {
         this.state = {
             alert_type_str: ["发生错误：服务器无法获取信息。", "发生错误：无法对提醒事项进行操作。"],
             user_img: user_img,
+            status: 0,
             user_name: '',
             show_alert: false,
             alert_type: 0,
@@ -112,6 +114,7 @@ class Home extends React.Component {
         }else{
             this.setState({
                 show_alert: true,
+                status: 1,
             })
         }
 
@@ -124,10 +127,12 @@ class Home extends React.Component {
         if(response_3.success === 1){
             this.setState({
                 todo_data: response_3.todo_data,
+                status: 1,
             })
         }else{
             this.setState({
                 show_alert: true,
+                status: 1,
             })
         }
     }
@@ -149,7 +154,7 @@ class Home extends React.Component {
         }
     }
 
-    render() {
+    generateBody(){
         const feed_items = this.state.feed_item_data.map((item, key)=>
             <FeedItem key={key}
                       date={item.date}
@@ -160,13 +165,12 @@ class Home extends React.Component {
                       score={item.score}/>
         );
 
-        return (
-            <div>
-                {this.generateAlertBar()}
-                <header className="home-screen-header">
-                    日记
-                </header>
-
+        if(this.state.status === 0){
+            return(
+                <Spinner className="home-page-spinner" animation="grow" />
+            );
+        }else if(this.state.status === 1){
+            return(
                 <div className="home-screen-content">
                     <Row>
                         <Col sm={4} xs={6}>
@@ -174,8 +178,14 @@ class Home extends React.Component {
                                 <img src={this.state.user_img} alt="user_img"
                                      className="home-screen-user-img" width={225} height={225}/>
                                 <Button variant="outline-success"
-                                        className="home-screen-write-button">
+                                        className="home-screen-write-button-1"
+                                        href="/write">
                                     写日记
+                                </Button>
+                                <Button variant="outline-warning"
+                                        className="home-screen-write-button-2"
+                                        href="/write_p">
+                                    特权写日记
                                 </Button>
                                 <div className="home-screen-to-do-list">
                                     <ToDoList todo_data={this.state.todo_data}
@@ -193,7 +203,19 @@ class Home extends React.Component {
                         </Col>
                     </Row>
                 </div>
+            );
+        }
+    }
 
+    render() {
+
+        return (
+            <div>
+                {this.generateAlertBar()}
+                <header className="home-screen-header">
+                    日记
+                </header>
+                {this.generateBody()}
             </div>
         )
     }
