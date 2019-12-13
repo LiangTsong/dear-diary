@@ -1,8 +1,8 @@
 import React from "react";
 import {
-    BrowserRouter as Router,
-    Switch,
+    HashRouter as Router,
     Route,
+    Switch
 } from "react-router-dom";
 
 import Home from "./Components/Page/Home";
@@ -21,14 +21,12 @@ import WriteP from "./Components/Presentation/WriteP";
                     <title>Dear Diary</title>
                 </Helmet>
                 <Router basename={process.env.PUBLIC_URL}>
-                    <div>
-                        <Switch>
-                            <Route exact path="/" component={Home}/>
-                            <Route exact path="/write" component={Write}/>
-                            <Route exact path="/write_p" component={WriteP}/>
-                            <Route exact path="/chart" component={Chart}/>
-                        </Switch>
-                    </div>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/write" component={Write}/>
+                        <Route exact path="/write_p" component={WriteP}/>
+                        <Route exact path="/chart" component={Chart}/>
+                    </Switch>
                 </Router>
                 <div className="copyright-footage">
                     Copyright © 2019 Liang Cong & Ye Ziyi All rights reserved.

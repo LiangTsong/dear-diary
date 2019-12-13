@@ -10,6 +10,7 @@ import "./Chart.css"
 import axios from "axios";
 import {URL_ROOT, GET_CHART} from "../../Constants";
 import Spinner from "react-bootstrap/Spinner";
+import {Link} from "react-router-dom";
 
 class Chart extends React.Component {
     constructor(props){
@@ -134,8 +135,10 @@ class Chart extends React.Component {
             <div>
                 <header className="chart-screen-header">
                     回顾
-                    <Button className="chart-screen-header-home-link"
-                            variant="outline-info" href={process.env.PUBLIC_URL + '/'}>返回</Button>
+                    <Link to={"/"}>
+                        <Button className="chart-screen-header-home-link"
+                                variant="outline-info">返回</Button>
+                    </Link>
                 </header>
                 {this.generateBody()}
             </div>

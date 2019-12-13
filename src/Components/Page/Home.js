@@ -13,6 +13,7 @@ import {USER_INFO, URL_ROOT, GET_TODO, INFO_FLOW} from "../../Constants";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
 import moment from "moment";
+import {Link} from "react-router-dom";
 
 class Home extends React.Component {
     constructor(props){
@@ -140,16 +141,19 @@ class Home extends React.Component {
                             <div className="home-screen-user-img-and-write-button">
                                 <img src={this.state.user_img} alt="user_img"
                                      className="home-screen-user-img" width={225} height={225}/>
-                                <Button variant="outline-success"
-                                        className="home-screen-write-button-1"
-                                        href="/write">
-                                    写日记
-                                </Button>
-                                <Button variant="outline-warning"
-                                        className="home-screen-write-button-2"
-                                        href="/write_p">
-                                    特权写日记
-                                </Button>
+                                <Link to={"/write"}>
+                                    <Button variant="outline-success"
+                                            className="home-screen-write-button-1">
+                                        写日记
+                                    </Button>
+                                </Link>
+
+                                <Link to={"/write_p"}>
+                                    <Button variant="outline-warning"
+                                            className="home-screen-write-button-2">
+                                        特权写日记
+                                    </Button>
+                                </Link>
                                 <div className="home-screen-to-do-list">
                                     <ToDoList todo_data={this.state.todo_data}
                                               setShowAlert={(b, i)=>this.setShowAlert(b, i)}>
@@ -177,8 +181,10 @@ class Home extends React.Component {
                 {this.generateAlertBar()}
                 <header className="home-screen-header">
                     日记
-                    <Button className="home-screen-header-chart-link"
-                            variant="outline-info" href={process.env.PUBLIC_URL + '/chart'}>统计</Button>
+                    <Link to={"/chart"}>
+                        <Button className="home-screen-header-chart-link"
+                                                variant="outline-info">统计</Button>
+                    </Link>
                 </header>
                 {this.generateBody()}
             </div>

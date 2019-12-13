@@ -23,6 +23,7 @@ class EditorToDoList extends React.Component {
         }
         this.state = {
             todo_data: editor_todo_data,
+            status: 0,
         };
     };
 
@@ -97,7 +98,7 @@ class EditorToDoList extends React.Component {
 
         if(response.data.success === 1){
             this.setState({
-                status: 3,
+                status: 1,
             });
         }else{
             this.props.setAlertType(3);
@@ -109,9 +110,9 @@ class EditorToDoList extends React.Component {
 
     render() {
 
-        if (this.state.status === 3) {
-            return <Redirect to={process.env.PUBLIC_URL + '/'} />
-        };
+        if (this.state.status === 1) {
+            return <Redirect to={'/'} />
+        }
 
         const todos = this.state.todo_data.map((item, index) =>
             <ListGroup.Item key={index} className="main-editor-to-do-list-item" style={{display: this.getShow(index)}}>
