@@ -39,7 +39,7 @@ class Chart extends React.Component {
             URL_ROOT + GET_CHART,
             post_data
         );
-
+        console.log(response.data);
         if(response.data.success === 1){
             this.setState({
                 id: response.data.id,
@@ -134,6 +134,8 @@ class Chart extends React.Component {
             <div>
                 <header className="chart-screen-header">
                     回顾
+                    <Button className="chart-screen-header-home-link"
+                            variant="outline-info" href="/dear-diary/home">返回</Button>
                 </header>
                 {this.generateBody()}
             </div>

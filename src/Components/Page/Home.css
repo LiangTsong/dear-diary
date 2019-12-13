@@ -5,6 +5,14 @@
     margin: 0 auto;
 }
 
+.home-screen-header-chart-link{
+    float: right;
+    display: inline;
+    margin-top: 60px;
+    margin-right: 15%;
+    width: 100px;
+}
+
 .home-screen-user-img-and-write-button{
     position: relative;
 }

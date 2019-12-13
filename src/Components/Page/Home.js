@@ -58,7 +58,7 @@ class Home extends React.Component {
             })
         }
 
-        console.log(response_1.data.user_img);
+        console.log(response_1.data);
 
         // todo_list
         const response_2 = await axios.post(
@@ -77,6 +77,8 @@ class Home extends React.Component {
             })
         }
 
+        console.log(response_2.data);
+
         // info_flow
         const response_3 = await axios.post(
             URL_ROOT + INFO_FLOW,
@@ -94,6 +96,7 @@ class Home extends React.Component {
                 status: 1,
             })
         }
+        console.log(response_3.data);
     }
 
     setShowAlert(b, i){
@@ -139,12 +142,12 @@ class Home extends React.Component {
                                      className="home-screen-user-img" width={225} height={225}/>
                                 <Button variant="outline-success"
                                         className="home-screen-write-button-1"
-                                        href="/write">
+                                        href="/dear-diary/write">
                                     写日记
                                 </Button>
                                 <Button variant="outline-warning"
                                         className="home-screen-write-button-2"
-                                        href="/write_p">
+                                        href="/dear-diary/write_p">
                                     特权写日记
                                 </Button>
                                 <div className="home-screen-to-do-list">
@@ -174,6 +177,8 @@ class Home extends React.Component {
                 {this.generateAlertBar()}
                 <header className="home-screen-header">
                     日记
+                    <Button className="home-screen-header-chart-link"
+                            variant="outline-info" href="/dear-diary/chart">统计</Button>
                 </header>
                 {this.generateBody()}
             </div>

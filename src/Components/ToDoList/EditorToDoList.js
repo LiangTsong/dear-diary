@@ -1,5 +1,7 @@
 import React from "react";
 
+import  { Redirect } from 'react-router-dom';
+
 import Form from 'react-bootstrap/Form';
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -51,7 +53,6 @@ class EditorToDoList extends React.Component {
 
     handleNewItem(){
         let my_todo_data = this.state.todo_data;
-        console.log(my_todo_data[0].show);
         let new_item = {
             date: new Date(),
             content: '',
@@ -95,14 +96,22 @@ class EditorToDoList extends React.Component {
         console.log(post_data);
 
         if(response.data.success === 1){
-
+            this.setState({
+                status: 3,
+            });
         }else{
             this.props.setAlertType(3);
             this.props.setShowAlert(true);
         }
     }
 
+
+
     render() {
+
+        if (this.state.status === 3) {
+            return <Redirect to='/dear-diary/home' />
+        };
 
         const todos = this.state.todo_data.map((item, index) =>
             <ListGroup.Item key={index} className="main-editor-to-do-list-item" style={{display: this.getShow(index)}}>

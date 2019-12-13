@@ -21,16 +21,16 @@ const App = () => (
         <Router>
             <div>
                 <Switch>
-                    <Route path="/chart">
+                    <Route path="/dear-diary/chart">
                         <Chart />
                     </Route>
-                    <Route path="/write">
+                    <Route path="/dear-diary/write">
                         <Write />
                     </Route>
-                    <Route path="/write_p">
+                    <Route path="/dear-diary/write_p">
                         <WriteP />
                     </Route>
-                    <Route path="/">
+                    <Route path="/dear-diary/">
                         <Home />
                     </Route>
                 </Switch>

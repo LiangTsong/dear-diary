@@ -46,11 +46,12 @@ class Write extends React.Component {
             post_data
         );
 
+        console.log(response.data);
         if (response.data.success === 1) {
             this.setState({
                 id: response.data.id,
                 object_text: response.data.object_text,
-                state: 0,
+                status: 0,
             });
         }else{
             this.setState({
@@ -96,6 +97,8 @@ class Write extends React.Component {
             post_data
         );
 
+        console.log(response.data);
+
         if(response.data.success === 1) {
             let i;
             for(i=0; i<response.data.todo_data.length; i++){
@@ -109,6 +112,7 @@ class Write extends React.Component {
             this.setState({
                 show_alert: true,
                 alert_type: 2,
+                status: 0,
             });
         }
     }
@@ -121,7 +125,7 @@ class Write extends React.Component {
                         {this.state.date}
                     </div>
                     <div>
-                        <MainEditor handleTextChange={(text)=>this.handleTextChange(text)}
+                        <MainEditor handleTextChange={(text, obj)=>this.handleTextChange(text, obj)}
                                     editorState={this.state.object_text}>
                         </MainEditor>
                     </div>
@@ -131,7 +135,7 @@ class Write extends React.Component {
             return(
                 <div className="main-editor-to-do-list">
                     <EditorToDoList editor_todo_data={this.state.editor_todo_data}
-                                    setAlertType={(t)=>this.setAlertType()}
+                                    setAlertType={(t)=>this.setAlertType(t)}
                                     setShowAlert={(b)=>this.setShowAlert(b)}/>
                 </div>
             );
@@ -154,8 +158,7 @@ class Write extends React.Component {
         }else if(this.state.status === 1){
             button = (
                 <Button variant="success" className="main-editor-finish-button"
-                        disabled={true}
-                        onClick={()=>this.handleSaveDiary()}>
+                        disabled={true}>
                     <Spinner
                         as="span"
                         animation="grow"
@@ -182,7 +185,7 @@ class Write extends React.Component {
         if(this.state.show_alert){
             return(
                 <Alert variant="danger" onClose={() => this.setShowAlert(false)} dismissible>
-                    {type_str[this.state.alert]}
+                    {this.state.alert_str[this.state.alert_type]}
                 </Alert>
             );
         }

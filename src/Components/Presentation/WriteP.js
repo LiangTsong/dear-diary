@@ -1,6 +1,6 @@
 import React from "react";
 
-import {URL_ROOT, NEW_DIARY, SUBMIT_DIARY} from "../../Constants";
+import {URL_ROOT, NEW_DIARY_P, SUBMIT_DIARY} from "../../Constants";
 
 import Button from "react-bootstrap/Button";
 
@@ -22,7 +22,7 @@ class WriteP extends React.Component {
                 "发生错误：无法保存提醒事项。"],
             alert_type: -1,
             show_alert: false,
-            date: moment.unix((new Date()).getTime()/1000).format("YYYY年MM月DD日"),
+            date: 1575129600000,
             raw_text: '',
             object_text: '',
             id: null,
@@ -34,21 +34,26 @@ class WriteP extends React.Component {
 
     async componentDidMount() {
         this.setState({
-
+            status: -1,
+            alert_type: -1,
+            show_alert: false,
         });
 
         // POST
-        const post_data = {};
+        const post_data = {
+            date: this.state.date,
+        };
         const response = await axios.post(
-            URL_ROOT+NEW_DIARY,
+            URL_ROOT+NEW_DIARY_P,
             post_data
         );
-
+        console.log(post_data);
+        console.log(response.data);
         if (response.data.success === 1) {
             this.setState({
                 id: response.data.id,
                 object_text: response.data.object_text,
-                state: 0,
+                status: 0,
             });
         }else{
             this.setState({
@@ -90,9 +95,11 @@ class WriteP extends React.Component {
         console.log(post_data);
 
         const response = await axios.post(
-            URL_ROOT + SUBMIT_DIARY + "_presentation",
+            URL_ROOT + SUBMIT_DIARY,
             post_data
         );
+
+        console.log(response.data);
 
         if(response.data.success === 1) {
             let i;
@@ -107,6 +114,7 @@ class WriteP extends React.Component {
             this.setState({
                 show_alert: true,
                 alert_type: 2,
+                status: 0,
             });
         }
     }
@@ -116,10 +124,10 @@ class WriteP extends React.Component {
             return(
                 <div className="main-editor">
                     <div className="main-editor-date">
-                        {this.state.date}
+                        {moment.unix(this.state.date/1000).format("YYYY年MM月DD日")}
                     </div>
                     <div>
-                        <MainEditor handleTextChange={(text)=>this.handleTextChange(text)}
+                        <MainEditor handleTextChange={(text, obj)=>this.handleTextChange(text, obj)}
                                     editorState={this.state.object_text}>
                         </MainEditor>
                     </div>
@@ -129,7 +137,7 @@ class WriteP extends React.Component {
             return(
                 <div className="main-editor-to-do-list">
                     <EditorToDoList editor_todo_data={this.state.editor_todo_data}
-                                    setAlertType={(t)=>this.setAlertType()}
+                                    setAlertType={(t)=>this.setAlertType(t)}
                                     setShowAlert={(b)=>this.setShowAlert(b)}/>
                 </div>
             );
@@ -152,8 +160,7 @@ class WriteP extends React.Component {
         }else if(this.state.status === 1){
             button = (
                 <Button variant="success" className="main-editor-finish-button"
-                        disabled={true}
-                        onClick={()=>this.handleSaveDiary()}>
+                        disabled={true}>
                     <Spinner
                         as="span"
                         animation="grow"
@@ -180,7 +187,7 @@ class WriteP extends React.Component {
         if(this.state.show_alert){
             return(
                 <Alert variant="danger" onClose={() => this.setShowAlert(false)} dismissible>
-                    {type_str[this.state.alert]}
+                    {this.state.alert_str[this.state.alert_type]}
                 </Alert>
             );
         }
