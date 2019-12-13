@@ -94,7 +94,7 @@ class EditorToDoList extends React.Component {
 
         console.log(post_data);
 
-        if(response.success === 1){
+        if(response.data.success === 1){
 
         }else{
             this.props.setAlertType(3);

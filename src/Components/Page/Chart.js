@@ -19,27 +19,12 @@ class Chart extends React.Component {
             slider_value: 100,
             status: 0,
             id: [],
-            data_number: 11,
-            emojis: [["🤪"], ["🤪"], ["😭"], ["🤪"], ["🤪"], ["🤪"], ["🤪"], ["🤪"], ["🤪"], ["🤪"], [""]],
-            digests: ["开心开心开心开心开心开心开心", "伤心伤心伤心伤心伤心伤心伤心伤心",
-                "难过到了极点。早课睡过头了。外卖撒了。ddl到了。火车晚点了。真是伤心的一天。",
-                "今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。",
-                "中等中等中等", "开心开心开心开心开心开心开心", "中等中等中等", "中等中等中等",
-                "中等中等中等", "中等中等中等", "中等中等中等", "中等中等中等"],
+            data_number: 0,
+            emojis: [],
+            digests: [],
             data: [
-                {x: 0, y: 0.89},
-                {x: 1, y: 0.35},
-                {x: 2, y: 0.11},
-                {x: 3, y: 0.93},
-                {x: 4, y: 0.55},
-                {x: 5, y: 0.68},
-                {x: 6, y: 0.55},
-                {x: 7, y: 0.56},
-                {x: 8, y: 0.57},
-                {x: 9, y: 0.58},
-                {x: 10, y: 0.59},
             ],
-            dates: [new Date().getTime(), "12.2", "12.3", "12.4", "12.5", "12.6", "12.7", "12.8", "12.9", "12.10", new Date().getTime()],
+            dates: [],
         }
     }
 
@@ -55,14 +40,14 @@ class Chart extends React.Component {
             post_data
         );
 
-        if(response.success === 1){
+        if(response.data.success === 1){
             this.setState({
-                id: response.id,
-                data_number: response.data_number,
-                emotions: response.emotions,
-                digests: response.digests,
-                data: response.data,
-                dates: response.dates,
+                id: response.data.id,
+                data_number: response.data.data_number,
+                emotions: response.data.emotions,
+                digests: response.data.digests,
+                data: response.data.data,
+                dates: response.data.dates,
                 status: 1,
             })
         }

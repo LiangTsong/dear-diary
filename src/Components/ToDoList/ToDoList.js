@@ -40,7 +40,7 @@ class ToDoList extends React.Component {
                 post_data
             );
 
-            if(response.success === 1){
+            if(response.data.success === 1){
                 my_todo_data[index].expired = this.props.todo_data[index].expired;
                 my_todo_data[index].finished = 0;
 
@@ -62,7 +62,7 @@ class ToDoList extends React.Component {
                 URL_ROOT + TODO_CHANGE,
                 post_data
             );
-            if(response.success === 1){
+            if(response.data.success === 1){
                 my_todo_data[index].finished = 1;
 
                 console.log('Change index ' + index + ' to finished.');
@@ -91,7 +91,7 @@ class ToDoList extends React.Component {
             post_data
         );
 
-        if(response.success === 1){
+        if(response.data.success === 1){
             const my_todo_data = JSON.parse(JSON.stringify(this.state.todo_data));
             my_todo_data[index].show = 0;
             console.log(my_todo_data);

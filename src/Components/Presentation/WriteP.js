@@ -44,10 +44,10 @@ class WriteP extends React.Component {
             post_data
         );
 
-        if (response.success === 1) {
+        if (response.data.success === 1) {
             this.setState({
-                id: response.id,
-                object_text: response.object_text,
+                id: response.data.id,
+                object_text: response.data.object_text,
                 state: 0,
             });
         }else{
@@ -94,13 +94,13 @@ class WriteP extends React.Component {
             post_data
         );
 
-        if(response.success === 1) {
+        if(response.data.success === 1) {
             let i;
-            for(i=0; i<response.todo_data.length; i++){
-                response.todo_data[i].date = new Date(response.todo_data[i].date);
+            for(i=0; i<response.data.todo_data.length; i++){
+                response.data.todo_data[i].date = new Date(response.data.todo_data[i].date);
             }
             this.setState({
-                editor_todo_data: response.todo_data,
+                editor_todo_data: response.data.todo_data,
                 status: 2,
             })
         }else{

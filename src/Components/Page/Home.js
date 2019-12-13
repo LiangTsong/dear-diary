@@ -8,11 +8,11 @@ import FeedItem from "../Dashboard/FeedItem";
 import ToDoList from "../ToDoList/ToDoList";
 
 import "./Home.css"
-import user_img from "../../../data/img/user_img_generic.jpeg"
 import axios from "axios";
 import {USER_INFO, URL_ROOT, GET_TODO, INFO_FLOW} from "../../Constants";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
+import moment from "moment";
 
 class Home extends React.Component {
     constructor(props){
@@ -25,59 +25,8 @@ class Home extends React.Component {
             show_alert: false,
             alert_type: 0,
             feed_item_data: [
-                {
-                    type: 0,
-                    item_id: 1,
-                    diary_id: 1,
-                    date:"2019-12-31 00:00",
-                    user_name:"我自己",
-                    user_img:user_img,
-                    digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: ['😀'],
-                    score: 0.99,
-                },
-                {
-                    type: 1,
-                    item_id: 1,
-                    diary_id: 1,
-                    date:"2019-12-31 00:00",
-                    user_name:"我自己",
-                    user_img:user_img,
-                    digest: '今天是快乐的一天，我写完了作业，吃了好吃的，看了电影，喝了奶茶，还去了游乐场。',
-                    emotion: ['😀','😀'],
-                    score: 0.88,
-                },
-
             ],
             todo_data:[
-                {
-                    date: new Date().getTime(),
-                    content: '2019年最后一天',
-                    expired: 0,
-                    finished: 0,
-                    id: 0,
-                },
-                {
-                    date: '2019.12.31 00:00',
-                    content: '2019年最后一天',
-                    expired: 1,
-                    finished: 0,
-                    id: 1,
-                },
-                {
-                    date: '2019.12.31 00:00',
-                    content: '2019年最后一天',
-                    expired: 2,
-                    finished: 0,
-                    id: 2,
-                },
-                {
-                    date: '2019.12.31 00:00',
-                    content: '2019年最后一天',
-                    expired: 2,
-                    finished: 1,
-                    id: 3,
-                },
             ],
         }
     }
@@ -98,7 +47,7 @@ class Home extends React.Component {
             post_data
         );
 
-        if(response_1.success === 1){
+        if(response_1.data.success === 1){
             this.setState({
                 user_img: response_1.data.user_img,
                 user_name: response_1.data.user_name,
@@ -117,7 +66,7 @@ class Home extends React.Component {
             post_data
         );
 
-        if(response_2.success === 1){
+        if(response_2.data.success === 1){
             this.setState({
                 todo_data: response_2.data.todo_data,
             })
@@ -134,7 +83,7 @@ class Home extends React.Component {
             post_data
         );
 
-        if(response_3.success === 1){
+        if(response_3.data.success === 1){
             this.setState({
                 feed_item_data: response_3.data.feed_item_data,
                 status: 1,
@@ -167,7 +116,8 @@ class Home extends React.Component {
     generateBody(){
         const feed_items = this.state.feed_item_data.map((item, key)=>
             <FeedItem key={key}
-                      date={item.date}
+                      date={moment.unix((new Date(item.date)).getTime()/1000)
+                          .format("YYYY年MM月DD日")}
                       user_name={item.user_name}
                       user_img={item.user_img}
                       digest={item.digest}
