@@ -13,34 +13,29 @@ import "./App.css";
 import {Helmet} from "react-helmet";
 import WriteP from "./Components/Presentation/WriteP";
 
-const App = () => (
-    <div>
-        <Helmet>
-            <title>Dear Diary</title>
-        </Helmet>
-        <Router>
+    function App(){
+        return(
             <div>
-                <Switch>
-                    <Route path={process.env.PUBLIC_URL + '/chart'}>
-                        <Chart />
-                    </Route>
-                    <Route path={process.env.PUBLIC_URL + '/write'}>
-                        <Write />
-                    </Route>
-                    <Route path={process.env.PUBLIC_URL + '/write_p'}>
-                        <WriteP />
-                    </Route>
-                    <Route path={process.env.PUBLIC_URL + '/'}>
-                        <Home />
-                    </Route>
-                </Switch>
+                <Helmet>
+                    <meta charSet={"utf-8"}/>
+                    <title>Dear Diary</title>
+                </Helmet>
+                <Router basename={process.env.PUBLIC_URL}>
+                    <div>
+                        <Switch>
+                            <Route exact path="/" component={Home}/>
+                            <Route exact path="/write" component={Write}/>
+                            <Route exact path="/write_p" component={WriteP}/>
+                            <Route exact path="/chart" component={Chart}/>
+                        </Switch>
+                    </div>
+                </Router>
+                <div className="copyright-footage">
+                    Copyright © 2019 Liang Cong & Ye Ziyi All rights reserved.
+                </div>
             </div>
-        </Router>
-        <div className="copyright-footage">
-            Copyright © 2019 Liang Cong & Ye Ziyi All rights reserved.
-        </div>
-    </div>
-)
+        );
+}
 
 
 export default App;
