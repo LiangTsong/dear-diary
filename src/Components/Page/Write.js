@@ -33,6 +33,12 @@ class Write extends React.Component {
     }
 
     async componentDidMount() {
+        this.setState({
+            status: -1,
+            alert_type: -1,
+            show_alert: false,
+        });
+
         // POST
         const post_data = {};
         const response = await axios.post(

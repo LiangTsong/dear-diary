@@ -33,6 +33,10 @@ class WriteP extends React.Component {
     }
 
     async componentDidMount() {
+        this.setState({
+
+        });
+
         // POST
         const post_data = {};
         const response = await axios.post(

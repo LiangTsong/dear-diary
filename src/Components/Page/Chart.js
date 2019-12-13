@@ -44,6 +44,10 @@ class Chart extends React.Component {
     }
 
     async componentDidMount() {
+        this.setState({
+           status: 0,
+        });
+
         const post_data = {};
 
         const response = await axios.post(

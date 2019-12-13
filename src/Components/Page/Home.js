@@ -19,7 +19,7 @@ class Home extends React.Component {
         super(props);
         this.state = {
             alert_type_str: ["发生错误：服务器无法获取信息。", "发生错误：无法对提醒事项进行操作。"],
-            user_img: user_img,
+            user_img: '',
             status: 0,
             user_name: '',
             show_alert: false,
@@ -83,6 +83,14 @@ class Home extends React.Component {
     }
 
     async componentDidMount() {
+        this.setState({
+            user_img: '',
+            status: 0,
+            user_name: '',
+            show_alert: false,
+            alert_type: 0,
+        });
+
         const post_data = {};
         // user_info
         const response_1 = await axios.post(
@@ -92,14 +100,16 @@ class Home extends React.Component {
 
         if(response_1.success === 1){
             this.setState({
-                user_img: response_1.user_img,
-                user_name: response_1.user_name,
+                user_img: response_1.data.user_img,
+                user_name: response_1.data.user_name,
             })
         }else{
             this.setState({
                 show_alert: true,
             })
         }
+
+        console.log(response_1.data.user_img);
 
         // todo_list
         const response_2 = await axios.post(
@@ -109,7 +119,7 @@ class Home extends React.Component {
 
         if(response_2.success === 1){
             this.setState({
-                todo_data: response_2.todo_data,
+                todo_data: response_2.data.todo_data,
             })
         }else{
             this.setState({
@@ -126,7 +136,7 @@ class Home extends React.Component {
 
         if(response_3.success === 1){
             this.setState({
-                todo_data: response_3.todo_data,
+                feed_item_data: response_3.data.feed_item_data,
                 status: 1,
             })
         }else{
