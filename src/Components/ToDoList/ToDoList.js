@@ -35,6 +35,8 @@ class ToDoList extends React.Component {
               "id": id,
               "type": 2,
             };
+
+            console.log(post_data);
             const response = await axios.post(
                 URL_ROOT + TODO_CHANGE,
                 post_data
@@ -86,6 +88,8 @@ class ToDoList extends React.Component {
             "id": this.state.todo_data[index].id,
             "type": 1,
         };
+
+        console.log(post_data);
         const response = await axios.post(
             URL_ROOT + TODO_CHANGE,
             post_data

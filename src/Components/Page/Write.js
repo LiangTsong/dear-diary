@@ -50,7 +50,7 @@ class Write extends React.Component {
         if (response.data.success === 1) {
             this.setState({
                 id: response.data.id,
-                object_text: response.data.object_text,
+                object_text: JSON.parse(response.data.object_text),
                 status: 0,
             });
         }else{
@@ -85,7 +85,7 @@ class Write extends React.Component {
             status: 1,
         });
         const post_data = {
-            "raw_text": this.state.raw_text,
+            "raw_text": JSON.stringify(this.state.raw_text),
             "object_text": this.state.object_text,
             "id": this.state.id,
         };
