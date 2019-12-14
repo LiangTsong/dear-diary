@@ -54,6 +54,7 @@ class WriteP extends React.Component {
                 id: response.data.id,
                 object_text: JSON.parse(response.data.object_text),
                 status: 0,
+                diary_type: response.data.type,
             });
         }else{
             this.setState({
@@ -128,7 +129,8 @@ class WriteP extends React.Component {
                     </div>
                     <div>
                         <MainEditor handleTextChange={(text, obj)=>this.handleTextChange(text, obj)}
-                                    editorState={this.state.object_text}>
+                                    editorState={this.state.object_text}
+                                    diary_type={this.state.diary_type}>
                         </MainEditor>
                     </div>
                 </div>

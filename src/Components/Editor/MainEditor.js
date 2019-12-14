@@ -30,7 +30,7 @@ class MainEditor extends React.Component {
         this.toggleBlockType = (type) => this._toggleBlockType(type);
         this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 
-        const editor_state = (props.editorState.length > 0)? (props.editorState.length) : EditorState.createEmpty();
+        const editor_state = (props.diary_type === 0)? props.editorState : EditorState.createEmpty();
         this.state={
             editorState: editor_state,
             text: null,
