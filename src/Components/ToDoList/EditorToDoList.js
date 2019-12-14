@@ -86,7 +86,7 @@ class EditorToDoList extends React.Component {
         }
 
         const post_data = {
-            todo_data: post_todo_data,
+            "todo_data": post_todo_data,
         };
 
         const response = await axios.post(

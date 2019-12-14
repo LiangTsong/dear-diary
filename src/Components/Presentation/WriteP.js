@@ -41,7 +41,7 @@ class WriteP extends React.Component {
 
         // POST
         const post_data = {
-            date: this.state.date,
+            "date": this.state.date,
         };
         const response = await axios.post(
             URL_ROOT+NEW_DIARY_P,
@@ -87,9 +87,9 @@ class WriteP extends React.Component {
             status: 1,
         });
         const post_data = {
-            raw_text: this.state.raw_text,
-            object_text: this.state.object_text,
-            id: this.state.id,
+            "raw_text": this.state.raw_text,
+            "object_text": this.state.object_text,
+            "id": this.state.id,
         };
 
         console.log(post_data);

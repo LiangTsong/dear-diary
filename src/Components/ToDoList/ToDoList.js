@@ -32,8 +32,8 @@ class ToDoList extends React.Component {
         if (my_todo_data[index].finished === 1) {
             // recover
             const post_data = {
-              id: id,
-              type: 2,
+              "id": id,
+              "type": 2,
             };
             const response = await axios.post(
                 URL_ROOT + TODO_CHANGE,
@@ -55,8 +55,8 @@ class ToDoList extends React.Component {
         } else {
             // done
             const post_data = {
-                id: id,
-                type: 1,
+                "id": id,
+                "type": 1,
             };
             const response = await axios.post(
                 URL_ROOT + TODO_CHANGE,
@@ -83,8 +83,8 @@ class ToDoList extends React.Component {
 
     async handleDeleteItem(index) {
         const post_data = {
-            id: this.state.todo_data[index].id,
-            type: 1,
+            "id": this.state.todo_data[index].id,
+            "type": 1,
         };
         const response = await axios.post(
             URL_ROOT + TODO_CHANGE,
