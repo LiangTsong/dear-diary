@@ -126,7 +126,8 @@ class Home extends React.Component {
                       user_img={item.user_img}
                       digest={item.digest}
                       emotion={item.emotion}
-                      score={item.score}/>
+                      score={item.score}
+                      diary_id={item.diary_id}/>
         );
 
         if(this.state.status === 0){

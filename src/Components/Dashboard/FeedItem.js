@@ -4,6 +4,8 @@ import Media from "react-bootstrap/Media";
 import left_comma from "../../../data/img/quote-left-48.png";
 
 import './FeedItem.css';
+import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
 
 class FeedItem extends React.Component {
     constructor(props){
@@ -32,6 +34,7 @@ class FeedItem extends React.Component {
     }
 
     render() {
+        const type_str = ["block", "hidden"];
         return(
             <Media className="feed-item">
                 <div className="feed-item-user-img-and-emotion">
@@ -48,7 +51,13 @@ class FeedItem extends React.Component {
                 <Media.Body className="feed-item-body">
                     <div className="feed-item-user-name-and-date">
                         {this.state.user_name}，{this.state.date}
-                        <h5 className="feed-item-get-diary"></h5>
+                        <h5 className="feed-item-get-diary">
+
+                            <Link to={"/read/"+this.state.dairy_id} style={{display: type_str[this.state.type]}}>
+                                <Button variant="link">查看</Button>
+                            </Link>
+
+                        </h5>
                     </div>
                     <img src={left_comma} width={24} height={24} alt='“'/>
                     <p className="feed-item-digest">
