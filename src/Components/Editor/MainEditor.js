@@ -2,7 +2,7 @@
 
 import React from "react";
 // import ReactDOM from "react-dom";
-import {Editor, EditorState, RichUtils} from 'draft-js';
+import {Editor, EditorState, RichUtils, convertToRaw, convertFromRaw} from 'draft-js';
 import { Helmet } from "react-helmet";
 import numbered_list_img from "../../../data/img/numbered-list-26.png";
 import unordered_list_img from "../../../data/img/bulleted-list-30.png";
@@ -30,7 +30,8 @@ class MainEditor extends React.Component {
         this.toggleBlockType = (type) => this._toggleBlockType(type);
         this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 
-        const editor_state = (props.diary_type === 0)? props.editorState : EditorState.createEmpty();
+        console.log(this.props.diary_type);
+        const editor_state = (this.props.diary_type === 0)? EditorState.createWithContent(convertFromRaw(this.props.editorState)) : EditorState.createEmpty();
         this.state={
             editorState: editor_state,
             text: null,
@@ -38,10 +39,11 @@ class MainEditor extends React.Component {
     }
 
     onChange(editorState){
+        if(this.props.readOnly === true) return;
         // \U+FFFD is the separator
         const text = editorState.getCurrentContent().getPlainText("\n");
         this.setState({ editorState: editorState, text: text });
-        this.props.handleTextChange(text, editorState);
+        this.props.handleTextChange(text, convertToRaw(editorState.getCurrentContent()));
     }
 
     _handleKeyCommand(command) {
@@ -88,7 +90,7 @@ class MainEditor extends React.Component {
             },
         };
 
-        const { editorState } = this.state;
+        const editorState = this.state.editorState;
 
         // If the user changes block type before entering any text, we can
         // either style the placeholder or hide it. Let's just hide it now.

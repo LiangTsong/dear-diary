@@ -8,6 +8,7 @@ import {
 import Home from "./Components/Page/Home";
 import Write from "./Components/Page/Write";
 import Chart from "./Components/Page/Chart";
+import Read from "./Components/Page/Read";
 
 import "./App.css";
 import {Helmet} from "react-helmet";
@@ -26,6 +27,7 @@ import WriteP from "./Components/Presentation/WriteP";
                         <Route exact path="/write" component={Write}/>
                         <Route exact path="/write_p" component={WriteP}/>
                         <Route exact path="/chart" component={Chart}/>
+                        <Route exact path="/read/:id" component={Read}/>
                     </Switch>
                 </Router>
                 <div className="copyright-footage">

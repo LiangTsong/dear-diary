@@ -50,12 +50,25 @@ class Write extends React.Component {
         console.log(post_data);
         if (response.data.success === 1) {
             console.log(response.data);
-            this.setState({
-                id: response.data.id,
-                object_text: JSON.parse(response.data.object_text),
-                status: 0,
-                diary_type: response.data.type,
-            });
+            if(response.data.type === 1 || response.data.object_text.length < 10){
+                this.setState({
+                    id: response.data.id,
+                    status: 0,
+                    diary_type: 1,
+                });
+            }else if(response.data.type === 0){
+                this.setState({
+                    id: response.data.id,
+                    status: 0,
+                    object_text: JSON.parse(response.data.object_text),
+                    diary_type: response.data.type,
+                });
+            }else{
+                this.setState({
+                    show_alert: true,
+                    alert_type: 1,
+                });
+            }
         }else{
             this.setState({
                 show_alert: true,
@@ -89,7 +102,7 @@ class Write extends React.Component {
         });
         const post_data = {
             "raw_text": JSON.stringify(this.state.raw_text),
-            "object_text": this.state.object_text,
+            "object_text": JSON.stringify(this.state.object_text),
             "id": this.state.id,
         };
 
@@ -130,7 +143,8 @@ class Write extends React.Component {
                     <div>
                         <MainEditor handleTextChange={(text, obj)=>this.handleTextChange(text, obj)}
                                     editorState={this.state.object_text}
-                                    diary_type={this.state.diary_type}>
+                                    diary_type={this.state.diary_type}
+                                    readOnly={false}>
                         </MainEditor>
                     </div>
                 </div>

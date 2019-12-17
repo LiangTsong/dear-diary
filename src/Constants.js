@@ -9,3 +9,4 @@ export const INFO_FLOW = "/api/message/";
 export const GET_TODO = "/api/notice/";
 export const TODO_CHANGE = "/api/notice_operate/";
 export const GET_CHART = "/api/get_diary_info/";
+export const GET_DIARY = "/api/get_diary/";
