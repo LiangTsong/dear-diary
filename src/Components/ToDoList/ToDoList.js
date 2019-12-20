@@ -16,7 +16,7 @@ class ToDoList extends React.Component {
         const my_todo_data = props.todo_data.slice();
         let i;
         for(i=0; i<my_todo_data.length; i++){
-            my_todo_data[i].date = moment.unix((new Date(my_todo_data[i].date)).getTime())
+            my_todo_data[i].date = moment.unix(my_todo_data[i].date)
                 .format("YYYY年MM月DD日 HH时");
             my_todo_data[i].show = 1;
         }

@@ -120,7 +120,7 @@ class Home extends React.Component {
     generateBody(){
         const feed_items = this.state.feed_item_data.map((item, key)=>
             <FeedItem key={key}
-                      date={moment.unix((new Date(item.date)).getTime()/1000)
+                      date={moment.unix(item.date)
                           .format("YYYY年MM月DD日")}
                       user_name={item.user_name}
                       user_img={item.user_img}
