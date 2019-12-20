@@ -43,7 +43,7 @@ class WriteP extends React.Component {
         const post_data = {
             "date": parseInt(this.props.match.params.date, 10)
         };
-        console.log(post_data)
+        console.log(post_data);
         const response = await axios.post(
             URL_ROOT+NEW_DIARY_P,
             post_data
@@ -140,7 +140,7 @@ class WriteP extends React.Component {
             return(
                 <div className="main-editor">
                     <div className="main-editor-date">
-                        {moment.unix(this.state.date/1000).format("YYYY年MM月DD日")}
+                        {moment.unix(parseInt(this.props.match.params.date, 10)).format("YYYY年MM月DD日")}
                     </div>
                     <div>
                         <MainEditor handleTextChange={(text, obj)=>this.handleTextChange(text, obj)}

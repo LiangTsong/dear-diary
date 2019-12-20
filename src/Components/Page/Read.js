@@ -18,7 +18,7 @@ class Read extends React.Component {
             alert_str: ["发生错误：无法读取日记。"],
             alert_type: -1,
             show_alert: false,
-            date: moment.unix((new Date()).getTime()/1000).format("YYYY年MM月DD日"),
+            date: -1,
             raw_text: '',
             object_text: '',
             id: null,
@@ -57,6 +57,7 @@ class Read extends React.Component {
                     id: this.props.id,
                     status: 0,
                     diary_type: 1,
+                    date: moment.unix(parseInt(response.data.date, 10)).format("YYYY年MM月DD日"),
                 });
             }else {
                 this.setState({
@@ -64,6 +65,7 @@ class Read extends React.Component {
                     object_text: JSON.parse(response.data.object_text),
                     status: 0,
                     diary_type: 0,
+                    date: moment.unix(parseInt(response.data.date, 10)).format("YYYY年MM月DD日"),
                 });
             }
         }else{
