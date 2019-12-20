@@ -22,7 +22,7 @@ class WriteP extends React.Component {
                 "发生错误：无法保存提醒事项。"],
             alert_type: -1,
             show_alert: false,
-            date: 1575129600000,
+            date: 1575129600,
             raw_text: '',
             object_text: '',
             id: null,
