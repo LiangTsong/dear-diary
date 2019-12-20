@@ -41,21 +41,35 @@ class WriteP extends React.Component {
 
         // POST
         const post_data = {
-            "date": this.state.date,
+            "date": this.state.date
         };
         const response = await axios.post(
             URL_ROOT+NEW_DIARY_P,
             post_data
         );
+
         console.log(post_data);
-        console.log(response.data);
         if (response.data.success === 1) {
-            this.setState({
-                id: response.data.id,
-                object_text: JSON.parse(response.data.object_text),
-                status: 0,
-                diary_type: response.data.type,
-            });
+            console.log(response.data);
+            if(response.data.type === 1 || response.data.object_text.length < 10){
+                this.setState({
+                    id: response.data.id,
+                    status: 0,
+                    diary_type: 1,
+                });
+            }else if(response.data.type === 0){
+                this.setState({
+                    id: response.data.id,
+                    status: 0,
+                    object_text: JSON.parse(response.data.object_text),
+                    diary_type: response.data.type,
+                });
+            }else{
+                this.setState({
+                    show_alert: true,
+                    alert_type: 1,
+                });
+            }
         }else{
             this.setState({
                 show_alert: true,
