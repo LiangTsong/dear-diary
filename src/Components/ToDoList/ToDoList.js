@@ -16,7 +16,7 @@ class ToDoList extends React.Component {
         const my_todo_data = props.todo_data.slice();
         let i;
         for(i=0; i<my_todo_data.length; i++){
-            my_todo_data[i].date = moment.unix((new Date(my_todo_data[i].date)).getTime()/1000)
+            my_todo_data[i].date = moment.unix((new Date(my_todo_data[i].date)).getTime())
                 .format("YYYY年MM月DD日 HH时");
             my_todo_data[i].show = 1;
         }
@@ -33,7 +33,7 @@ class ToDoList extends React.Component {
             // recover
             const post_data = {
               "id": id,
-              "type": 2,
+              "type": 0,
             };
 
             console.log(post_data);
@@ -58,7 +58,7 @@ class ToDoList extends React.Component {
             // done
             const post_data = {
                 "id": id,
-                "type": 1,
+                "type": 2,
             };
             const response = await axios.post(
                 URL_ROOT + TODO_CHANGE,
