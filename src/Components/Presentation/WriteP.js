@@ -41,8 +41,9 @@ class WriteP extends React.Component {
 
         // POST
         const post_data = {
-            "date": this.state.date
+            "date": parseInt(this.props.match.params.date, 10)
         };
+        console.log(post_data)
         const response = await axios.post(
             URL_ROOT+NEW_DIARY_P,
             post_data

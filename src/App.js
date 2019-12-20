@@ -25,7 +25,7 @@ import WriteP from "./Components/Presentation/WriteP";
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/write" component={Write}/>
-                        <Route exact path="/write_p" component={WriteP}/>
+                        <Route exact path="/write_p/:date" component={WriteP}/>
                         <Route exact path="/chart" component={Chart}/>
                         <Route exact path="/read/:id" component={Read}/>
                     </Switch>
