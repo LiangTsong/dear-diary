@@ -45,7 +45,7 @@ class PolarityEmotionChart extends React.Component {
 
     render() {
 
-        if(this.props.data_number == null || this.props.data_number === 0){
+        if(this.props.data_number === null || this.props.data_number === 0){
             return(
                 <p style={{textAlign: "center"}}>还没有统计数据。</p>
             );

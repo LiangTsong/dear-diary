@@ -79,7 +79,8 @@ class Chart extends React.Component {
                 digests: this.state.digests.slice(begin, end),
                 data: new_data,
                 dates: this.state.dates.slice(begin, end),
-                id: this.state.id.slice(begin, end)
+                id: this.state.id.slice(begin, end),
+                data_number: end - begin,
             };
             // console.log(data_to_show);
             return data_to_show;
@@ -122,7 +123,8 @@ class Chart extends React.Component {
                                               digests={data_to_show.digests}
                                               data={data_to_show.data}
                                               dates={data_to_show.dates}
-                                              id={data_to_show.id}/>
+                                              id={data_to_show.id}
+                                              data_number={data_to_show.data_number}/>
                     </div>
                 </div>
             );
