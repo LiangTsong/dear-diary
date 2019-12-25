@@ -41,6 +41,7 @@ class Chart extends React.Component {
             post_data
         );
         console.log(response.data);
+
         if(response.data.success === 1){
             this.setState({
                 id: response.data.id,
@@ -51,6 +52,8 @@ class Chart extends React.Component {
                 dates: response.data.dates,
                 status: 1,
             })
+        }else{
+            console.log("SUCCESS === 0");
         }
 
     }

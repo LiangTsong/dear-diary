@@ -35,10 +35,10 @@ class PolarityEmotionChart extends React.Component {
 
     tickFormat(value, index, scale, tickTotal){
         if(index === 0){
-            return(moment.unix((new Date(this.props.dates[0])).getTime()/1000)
+            return(moment.unix(this.props.dates[0])
                 .format("MM/DD"));
         }else{
-            return(moment.unix((new Date(this.props.dates[this.props.dates.length-1])).getTime()/1000)
+            return(moment.unix(this.props.dates[this.props.dates.length-1])
                 .format("MM/DD"));
         }
     }
@@ -98,8 +98,7 @@ class PolarityEmotionChart extends React.Component {
                             values={this.state.crosshairValues}
                             className="crosshair-tag">
                             <p>{this.props.data[this.state.currentIndex].y}</p>
-                            <p>{moment.unix((new Date(this.props.dates[this.state.currentIndex]))
-                                .getTime()/1000)
+                            <p>{moment.unix((this.props.dates[this.state.currentIndex]))
                                 .format("YYYY年MM月DD日")}</p>
                         </Crosshair>
 
