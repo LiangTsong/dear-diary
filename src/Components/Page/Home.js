@@ -36,7 +36,7 @@ class Home extends React.Component {
         this.setState({
             user_img: '',
             status: 0,
-            user_name: '',
+            user_name: '我自己',
             show_alert: false,
             alert_type: 0,
         });
@@ -133,7 +133,10 @@ class Home extends React.Component {
 
         if(this.state.status === 0){
             return(
-                <Spinner className="home-page-spinner" animation="grow" />
+                <div  className="home-page-spinner">
+                    <Spinner animation="grow" />
+                    <div className="home-page-spinner-text">确保服务器已经打开……</div>
+                </div>
             );
         }else if(this.state.status === 1){
             return(
