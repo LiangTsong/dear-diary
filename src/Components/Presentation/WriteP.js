@@ -120,7 +120,7 @@ class WriteP extends React.Component {
         if(response.data.success === 1) {
             let i;
             for(i=0; i<response.data.todo_data.length; i++){
-                response.data.todo_data[i].date = new Date(response.data.todo_data[i].date);
+                response.data.todo_data[i].date = response.data.todo_data[i].date;
             }
             this.setState({
                 editor_todo_data: response.data.todo_data,
