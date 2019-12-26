@@ -36,6 +36,8 @@ class MainEditor extends React.Component {
             editorState: editor_state,
             text: null,
         }
+        const text = editor_state.getCurrentContent().getPlainText("\n");
+        this.props.handleTextChange(text, convertToRaw(editor_state.getCurrentContent()));
     }
 
     onChange(editorState){

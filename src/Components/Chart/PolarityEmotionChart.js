@@ -1,6 +1,6 @@
 import React from "react";
 
-import {FlexibleXYPlot, AreaSeries, XAxis, YAxis, Hint, GradientDefs, Crosshair} from 'react-vis';
+import {FlexibleXYPlot, AreaSeries, XAxis, YAxis, GradientDefs, Crosshair} from 'react-vis';
 
 import './PolarityEmotionChart.css';
 import '../../../node_modules/react-vis/dist/style.css';
