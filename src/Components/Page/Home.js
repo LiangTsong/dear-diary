@@ -120,6 +120,7 @@ class Home extends React.Component {
     generateBody(){
         const feed_items = this.state.feed_item_data.map((item, key)=>
             <FeedItem key={key}
+                      type={item.type}
                       date={moment.unix(item.date)
                           .format("YYYY年MM月DD日")}
                       user_name={item.user_name}

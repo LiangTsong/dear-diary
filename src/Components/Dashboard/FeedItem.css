@@ -35,3 +35,11 @@
     z-index: 0;
     position: relative;
 }
+
+.feed-item-hidden{
+    display: none;
+}
+
+.feed-item-block{
+    display: block;
+}

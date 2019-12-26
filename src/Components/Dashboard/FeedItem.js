@@ -10,6 +10,8 @@ import {Link} from "react-router-dom";
 class FeedItem extends React.Component {
     constructor(props){
         super(props);
+
+        console.log(props.type);
         this.state = {
             date: props.date,
             type: props.type,
@@ -53,7 +55,7 @@ class FeedItem extends React.Component {
                         {this.state.user_name}，{this.state.date}
                         <h5 className="feed-item-get-diary">
 
-                            <Link to={"/read/"+this.state.dairy_id} style={{display: type_str[this.state.type]}}>
+                            <Link to={"/read/"+this.state.dairy_id} className={`feed-item-${type_str[this.state.type]}`}>
                                 <Button variant="link">查看</Button>
                             </Link>
 
