@@ -14,6 +14,7 @@ import moment from "moment";
 class PolarityEmotionChart extends React.Component {
     constructor(props) {
         super(props);
+        console.log(this.props.emotions);
         this.state = {
             hintValue: null,
             currentIndex: 0,
@@ -87,18 +88,14 @@ class PolarityEmotionChart extends React.Component {
                             data={this.props.data}
                             curve="curveCatmullRom"/>
 
-                        {this.state.hintValue ?
-                        (<Hint value={this.state.hintValue}>
-                            <div className="polarity-emotion-chart-hint">
-                                {this.props.emojis[this.state.currentIndex]}
-                            </div>
-                        </Hint>) : null}
-
                         <Crosshair
                             values={this.state.crosshairValues}
                             className="crosshair-tag">
-                            <p>{this.props.data[this.state.currentIndex].y}</p>
-                            <p>{moment.unix((this.props.dates[this.state.currentIndex]))
+                            <p className="polarity-emotion-chart-hint-small">{this.props.data[this.state.currentIndex].y}</p>
+                                <div className="polarity-emotion-chart-hint">
+                                    {this.props.emotions[this.state.currentIndex]}
+                                </div>
+                            <p className="polarity-emotion-chart-hint-small">{moment.unix((this.props.dates[this.state.currentIndex]))
                                 .format("YYYY年MM月DD日")}</p>
                         </Crosshair>
 

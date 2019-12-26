@@ -29,8 +29,9 @@ class ToDoList extends React.Component {
         // use json to deep copy
         let my_todo_data = JSON.parse(JSON.stringify(this.state.todo_data));
 
-        if (my_todo_data[index].finished === 1) {
+        if (my_todo_data[index].finished === 0) {
             // recover
+            console.log(my_todo_data[index].finished);
             const post_data = {
               "id": id,
               "type": 0,
@@ -44,7 +45,7 @@ class ToDoList extends React.Component {
 
             if(response.data.success === 1){
                 my_todo_data[index].expired = this.props.todo_data[index].expired;
-                my_todo_data[index].finished = 0;
+                my_todo_data[index].finished = 1;
 
                 this.setState({
                     todo_data: my_todo_data,
@@ -64,8 +65,9 @@ class ToDoList extends React.Component {
                 URL_ROOT + TODO_CHANGE,
                 post_data
             );
+            console.log(post_data);
             if(response.data.success === 1){
-                my_todo_data[index].finished = 1;
+                my_todo_data[index].finished = 0;
 
                 console.log('Change index ' + index + ' to finished.');
 

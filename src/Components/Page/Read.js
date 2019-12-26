@@ -8,6 +8,8 @@ import "./Write.css"
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
 
 class Read extends React.Component {
 
@@ -144,6 +146,10 @@ class Read extends React.Component {
                 {this.generateAlertBar()}
                 <header className="main-editor-page-header">
                     阅读
+                    <Link to={"/"}>
+                        <Button className="read-screen-header-home-link"
+                                variant="outline-info">返回</Button>
+                    </Link>
                 </header>
                 {this.generateContent()}
             </div>

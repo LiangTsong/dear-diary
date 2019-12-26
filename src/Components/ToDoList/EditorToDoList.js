@@ -78,7 +78,7 @@ class EditorToDoList extends React.Component {
         for (i = 0; i < my_todo_data.length; i++) {
             if (my_todo_data[i].show === 1) {
                 let new_item = {
-                    date: new Date(my_todo_data[i].date).getTime(),
+                    date: new Date(my_todo_data[i].date).getTime()/1000,
                     content: my_todo_data[i].content,
                 };
                 post_todo_data.push(JSON.parse(JSON.stringify(new_item)));

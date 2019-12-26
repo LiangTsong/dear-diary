@@ -78,14 +78,13 @@ class Chart extends React.Component {
                 }
             ));
             data_to_show = {
-                emojis: this.state.emojis.slice(begin, end),
+                emotions: this.state.emotions.slice(begin, end),
                 digests: this.state.digests.slice(begin, end),
                 data: new_data,
                 dates: this.state.dates.slice(begin, end),
                 id: this.state.id.slice(begin, end),
                 data_number: end - begin,
             };
-            // console.log(data_to_show);
             return data_to_show;
         }else{
             return this.state;
@@ -122,7 +121,7 @@ class Chart extends React.Component {
                         <Slider value={this.state.slider_value} onChange={(value)=>this.handleSliderChange(value)}/>
                     </div>
                     <div className="chart-screen-chart">
-                        <PolarityEmotionChart emojis={data_to_show.emojis}
+                        <PolarityEmotionChart emotions={data_to_show.emotions}
                                               digests={data_to_show.digests}
                                               data={data_to_show.data}
                                               dates={data_to_show.dates}

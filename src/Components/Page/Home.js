@@ -181,7 +181,7 @@ class Home extends React.Component {
             <div>
                 {this.generateAlertBar()}
                 <header className="home-screen-header">
-                    日记
+                    {this.state.user_name}的日记
                     <Link to={"/chart"}>
                         <Button className="home-screen-header-chart-link"
                                                 variant="outline-info">统计</Button>

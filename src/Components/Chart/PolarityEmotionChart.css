@@ -1,7 +1,14 @@
 .polarity-emotion-chart-hint{
     background: rgba(0, 0, 0, 0);
-    font-size: 35px;
+    font-size: 30px;
     align-content: center;
+}
+
+.polarity-emotion-chart-hint-small{
+    background: rgba(0, 0, 0, 0);
+    font-size: 20px;
+    align-content: center;
+    font-weight: bolder;
 }
 
 .polarity-emotion-chart-box{
@@ -11,8 +18,8 @@
 }
 
 .crosshair-tag{
-    font-size: 30px;
-    width: 100px;
+    font-size: 35px;
+    width: 200px;
     text-align: center;
     color: #222222;
 }
