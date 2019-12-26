@@ -118,7 +118,7 @@ class Write extends React.Component {
         if(response.data.success === 1) {
             let i;
             for(i=0; i<response.data.todo_data.length; i++){
-                response.data.todo_data[i].date = new Date(response.data.todo_data[i].date);
+                response.data.todo_data[i].date = new Date(response.data.todo_data[i].date * 1000);
             }
             console.log("结果");
             console.log(response.data.todo_data);
