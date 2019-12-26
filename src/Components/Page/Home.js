@@ -22,7 +22,7 @@ class Home extends React.Component {
             alert_type_str: ["发生错误：服务器无法获取信息。", "发生错误：无法对提醒事项进行操作。"],
             user_img: '',
             status: 0,
-            user_name: '',
+            user_name: '我自己',
             show_alert: false,
             alert_type: 0,
             feed_item_data: [
