@@ -153,7 +153,7 @@ class Home extends React.Component {
                                     </Button>
                                 </Link>
 
-                                <Link to={"/write_p/1575129600"}>
+                                <Link to={"/write_p/1577257200"}>
                                     <Button variant="outline-warning"
                                             className="home-screen-write-button-2">
                                         特权写日记
